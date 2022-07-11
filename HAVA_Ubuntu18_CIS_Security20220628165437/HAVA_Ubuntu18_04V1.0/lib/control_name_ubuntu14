@@ -1,0 +1,716 @@
+CTRL_1=" Patching and Software Updates"
+
+CTRL_1_1=" Install Updates, Patches and Additional Security Software"
+DESC_1_1=" Periodically patches are released for included software either due to security flaws or to include additional functionality."
+
+CTRL_2=" Filesystem Configuration"
+
+CTRL_2_1=" Create Separate Partition for /tmp"
+DESC_2_1=" The /tmp directory is intended to be world-writable. There is a risk of resource exhaustion if it is not bound to a separate partition."
+
+CTRL_2_1_2=" Set nodev option for /tmp Partition"
+DESC_2_1_2=" The /tmp filesystem is not intended to support devices. Set this option to ensure that users cannot attempt to create block or character special devices in /tmp."
+
+CTRL_2_1_3=" Set nosuid option for /tmp Partition"
+DESC_2_1_3=" The /tmp filesystem is only intended for temporary file storage. Set this option to ensure that users cannot create set userid files in /tmp."
+
+CTRL_2_1_4=" Set noexec option for /tmp Partition"
+DESC_2_1_4=" The /tmp filesystem is only intended for temporary file storage. Set this option to ensure that users cannot run executable binaries from /tmp."
+
+CTRL_2_1_5=" Create Separate Partition for /var"
+DESC_2_1_5=" The /var directory may contain world-writable files and directories. There is a risk of resource exhaustion if it is not bound to a separate partition."
+
+CTRL_2_1_6=" Bind Mount the /var/tmp directory to /tmp"
+DESC_2_1_6=" Binding /var/tmp to /tmp allows /var/tmp to inherit the same mount options that /tmp owns. It will also prevent /var from filling up with temporary files as the contents of /var/tmp will actually reside in the file system containing /tmp."
+
+CTRL_2_1_7=" Create Separate Partition for /var/log"
+DESC_2_1_7=" There are two important reasons to ensure that system logs are stored on a separate partition: protection against resource exhaustion (since logs can grow quite large) and protection of audit data."
+
+CTRL_2_1_8=" Create Separate Partition for /var/log/audit"
+DESC_2_1_8=" The auditing daemon, auditd, stores log data in the /var/log/audit directory."
+
+CTRL_2_1_9=" Create Separate Partition for /home"
+DESC_2_1_9=" The /home directory is used to support disk storage needs of local users."
+
+CTRL_2_1_10=" Add nodev Option to /home"
+DESC_2_1_10=" When set on a file system, this option prevents character and block special devices from being defined, or if they exist, from being used as character and block special devices."
+
+CTRL_2_1_11=" Add nodev Option to Removable Media Partitions"
+DESC_2_1_11=" Set nodev on removable media to prevent character and block special devices that are present on the removable be treated as these device files."
+
+CTRL_2_1_12=" Add noexec Option to Removable Media Partitions"
+DESC_2_1_12=" Set noexec on removable media to prevent programs from executing from the removable media."
+
+CTRL_2_1_13=" Add nosuid Option to Removable Media Partitions"
+DESC_2_1_13=" Set nosuid on removable media to prevent setuid and setgid executable files that are on that media from being executed as setuid and setgid."
+
+CTRL_2_1_14=" Add nodev Option to /dev/shm Partition"
+DESC_2_1_14=" The nodev mount option specifies that the /dev/shm (temporary filesystem stored in memory) cannot contain block or character special devices."
+
+CTRL_2_1_15=" Add nosuid Option to /dev/shm Partition"
+DESC_2_1_15=" The nosuid mount option specifies that the /dev/shm (temporary filesystem stored in memory) will not execute setuid and setgid on executable programs as such, but rather execute them with the uid and gid of the user executing the program."
+
+CTRL_2_1_16=" Add noexec Option to /dev/shm Partition"
+DESC_2_1_16=" Set noexec on the shared memory partition to prevent programs from executing from there."
+
+CTRL_2_1_17=" Set Sticky Bit on All World-Writable Directories"
+DESC_2_1_17=" Setting the sticky bit on world writable directories prevents users from deleting or renaming files in that directory that are not owned by them."
+
+CTRL_2_1_18=" Disable Mounting of cramfs Filesystems"
+DESC_2_1_18=" The cramfs filesystem type is a compressed read-only Linux filesystem embedded in small footprint systems."
+
+CTRL_2_1_19=" Disable Mounting of freevxfs Filesystems"
+DESC_2_1_19=" The freevxfs filesystem type is a free version of the Veritas type filesystem."
+
+CTRL_2_1_20=" Disable Mounting of jffs2 Filesystems"
+DESC_2_1_20=" The jffs2 (journaling flash filesystem 2) filesystem type is a log-structured filesystem used in flash memory devices."
+
+CTRL_2_1_21=" Disable Mounting of hfs Filesystems"
+DESC_2_1_21=" The hfs filesystem type is a hierarchical filesystem that allows you to mount Mac OS filesystems."
+
+CTRL_2_1_22=" Disable Mounting of hfsplus Filesystems"
+DESC_2_1_22=" The hfsplus filesystem type is a hierarchical filesystem designed to replace hfs that allows you to mount Mac OS filesystems."
+
+CTRL_2_1_23=" Disable Mounting of squashfs Filesystems"
+DESC_2_1_23=" The squashfs filesystem type is a compressed read-only Linux filesystem embedded in small footprint systems (similar to cramfs)."
+
+CTRL_2_1_24=" Disable Mounting of udf Filesystems"
+DESC_2_1_24=" The udf filesystem type is the universal disk format used to implement ISO/IEC 13346 and ECMA-167 specifications."
+
+CTRL_2_2=" Configure Software Updates"
+DESC_2_2=" The requirement is to ensure that a patch management system is configured and maintained."
+
+CTRL_2_2_1=" Configure Connection to the RHN RPM Repositories"
+DESC_2_2_1=" Systems need to be registered with the Red Hat Network (RHN) to receive patch updates. This is usually configured during initial installation."
+
+CTRL_2_2_2=" Verify Red Hat GPG Key is Installed"
+DESC_2_2_2=" Red Hat cryptographically signs updates with a GPG key to verify that they are valid."
+
+CTRL_2_2_3=" Verify that gpgcheck is Globally Activated"
+DESC_2_2_3=" The gpgcheck option, found in the main section of the /etc/yum.conf file determines if an RPM package's signature is always checked prior to its installation."
+
+CTRL_2_2_4=" Disable the rhnsd Daemon"
+DESC_2_2_4=" The rhnsd daemon polls the Red Hat Network web site for scheduled actions and, if there are, executes those actions."
+
+CTRL_2_2_5=" Obtain Software Package Updates with yum"
+DESC_2_2_5=" The yum update utility performs software updates, including dependency analysis, based on repository metadata."
+
+CTRL_2_2_6=" Verify Package Integrity Using RPM"
+DESC_2_2_6=" RPM has the capability of verifying installed packages by comparing the installed files against the file information stored in the package."
+
+CTRL_2_3=" Advanced Intrusion Detection Environment (AIDE)"
+DESC_2_3=" AIDE is a file integrity checking tool which can detect unauthorized changes to configuration files by alerting when the files are changed."
+
+CTRL_2_3_1=" Install AIDE"
+DESC_2_3_1=" In some installations, AIDE is not installed automatically."
+
+CTRL_2_3_2=" Implement Periodic Execution of File Integrity"
+DESC_2_3_2=" Implement periodic file checking, in compliance with site policy."
+
+CTRL_2_4=" Configure SELinux"
+DESC_2_4=" SELinux provides a Mandatory Access Control (MAC) system that greatly augments the default Discretionary Access Control (DAC) model."
+
+CTRL_2_4_1=" Ensure SELinux is not disabled in /boot/grub2/grub.cfg"
+DESC_2_4_1=" Configure SELINUX to be enabled at boot time and verify that it has not been overwritten by the grub boot parameters."
+
+CTRL_2_4_2=" Set the SELinux State"
+DESC_2_4_2=" Set SELinux to enable when the system is booted."
+
+CTRL_2_4_3=" Set the SELinux Policy"
+DESC_2_4_3=" Configure SELinux to meet or exceed the default targeted policy, which constrains daemons and system software only."
+
+CTRL_2_4_4=" Remove SETroubleshoot"
+DESC_2_4_4=" The SETroubleshoot service notifies desktop users of SELinux denials through a userfriendly interface."
+
+CTRL_2_4_5=" Remove MCS Translation Service (mcstrans)"
+DESC_2_4_5=" The mcstransd daemon provides category label information to client processes requesting information."
+
+CTRL_2_4_6=" Check for Unconfined Daemons"
+DESC_2_4_6=" Daemons that are not defined in SELinux policy will inherit the security context of their parent process."
+
+CTRL_2_5=" Secure Boot Settings"
+DESC_2_5=" - "
+
+CTRL_2_5_1=" Set User/Group Owner on /boot/grub2/grub.cfg"
+DESC_2_5_1=" Set the owner and group of /boot/grub2/grub.cfg to the root user."
+
+CTRL_2_5_2=" Set Permissions on /boot/grub2/grub.cfg"
+DESC_2_5_2=" Set permission on the /boot/grub2/grub.cfg file to read and write for root only."
+
+CTRL_2_5_3=" Set Boot Loader Password"
+DESC_2_5_3=" Setting the boot loader password will require that the person who is rebooting the must enter a password before being able to set command line boot parameters"
+
+CTRL_2_6=" Additional Process Hardening"
+DESC_2_6=" - "
+
+CTRL_2_6_1=" Restrict Core Dumps"
+DESC_2_6_1=" A core dump is the memory of an executable program."
+
+CTRL_2_6_2=" Enable Randomized Virtual Memory Region Placement"
+DESC_2_6_2=" Set the system flag to force randomized virtual memory region placement."
+
+CTRL_2_7=" Use the Latest OS Release"
+DESC_2_7=" It is recommended that the latest update of the Red Hat software be used to take advantage of the latest functionality."
+
+
+
+CTRL_2=" OS Services"
+
+CTRL_2_1=" Remove Legacy Services"
+DESC_2_1=" - "
+
+CTRL_2_1_1=" Remove telnet-server"
+DESC_2_1_1=" The telnet-server package contains the telnetd daemon, which accepts connections from users from other systems via the telnet protocol."
+
+CTRL_2_1_2=" Remove telnet Clients"
+DESC_2_1_2=" The telnet package contains the telnet client, which allows users to start connections to other systems via the telnet protocol."
+
+CTRL_2_1_3=" Remove rsh-server"
+DESC_2_1_3=" The Berkeley rsh-server (rsh, rlogin, rcp) package contains legacy services that exchange credentials in clear-text."
+
+CTRL_2_1_4=" Remove rsh"
+DESC_2_1_4=" The rsh package contains the client commands for the rsh services."
+
+CTRL_2_1_5=" Remove NIS Client"
+DESC_2_1_5=" The Network Information Service (NIS), formerly known as Yellow Pages, is a client-server directory service protocol used to distribute system configuration files."
+
+CTRL_2_1_6=" Remove NIS Server"
+DESC_2_1_6=" The Network Information Service (NIS) (formally known as Yellow Pages) is a client-server directory service protocol for distributing system configuration files."
+
+CTRL_2_1_7=" Remove tftp"
+DESC_2_1_7=" Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, typically used to automatically transfer configuration or boot files between machines."
+
+CTRL_2_1_8=" Remove tftp-server"
+DESC_2_1_8=" Trivial File Transfer Protocol (TFTP) is a simple file transfer protocol, typically used to automatically transfer configuration or boot machines from a boot server."
+
+CTRL_2_1_9=" Remove talk"
+DESC_2_1_9=" The talk software makes it possible for users to send and receive messages across systems through a terminal session."
+
+CTRL_2_1_10=" Remove talk-server"
+DESC_2_1_10=" The talk software makes it possible for users to send and receive messages across systems through a terminal session."
+
+CTRL_2_1_11=" Remove xinetd"
+DESC_2_1_11=" The eXtended InterNET Daemon (xinetd) is an open source super daemon that replaced the original inetd daemon."
+
+CTRL_2_1_12=" Disable chargen-dgram"
+DESC_2_1_12=" chargen-dram is a network service that responds with 0 to 512 ASCII characters for each datagram it receives."
+
+CTRL_2_1_13=" Disable chargen-stream"
+DESC_2_1_13=" chargen-stream is a network service that responds with 0 to 512 ASCII characters for each connection it receives."
+
+CTRL_2_1_14=" Disable daytime-dgram"
+DESC_2_1_14=" daytime-dram is a network service that respondes with the server's current date and time."
+
+CTRL_2_1_15=" Disable daytime-stream"
+DESC_2_1_15=" daytime-stream is a network service that respondes with the server's current date and time."
+
+CTRL_2_1_16=" Disable echo-dgram"
+DESC_2_1_16=" echo-dgram is a network service that respondes to clients with the data sent to it by the client."
+
+CTRL_2_1_17=" Disable echo-stream"
+DESC_2_1_17=" echo-stream is a network service that respondes to clients with the data sent to it by the client."
+
+CTRL_2_1_18=" Disable tcpmux-server"
+DESC_2_1_18=" tcpmux-server is a network service that allows a client to access other network services running on the server."
+
+
+
+CTRL_3=" Special Purpose Services"
+
+CTRL_3_1=" Set Daemon umask"
+DESC_3_1=" Set the default umask for all processes started at boot time."
+
+CTRL_3_2=" Remove X Windows"
+DESC_3_2=" The X Windows system provides a Graphical User Interface (GUI) where users can have multiple windows in which to run programs and various add on."
+
+CTRL_3_3=" Disable Avahi Server"
+DESC_3_3=" Avahi is a free zeroconf implementation, including a system for multicast DNS/DNS-SD service discovery."
+
+CTRL_3_4=" Disable Print Server - CUPS"
+DESC_3_4=" The Common Unix Print System (CUPS) provides the ability to print to both local and network printers."
+
+CTRL_3_5=" Remove DHCP Server"
+DESC_3_5=" The Dynamic Host Configuration Protocol (DHCP) is a service that allows machines to be dynamically assigned IP addresses."
+
+CTRL_3_6=" Configure Network Time Protocol (NTP)"
+DESC_3_6=" The Network Time Protocol (NTP) is designed to synchronize system clocks across a variety of systems and use a source that is highly accurate."
+
+CTRL_3_7=" Remove LDAP"
+DESC_3_7=" The Lightweight Directory Access Protocol (LDAP) was introduced as a replacement for NIS/YP."
+
+CTRL_3_8=" Disable NFS and RPC"
+DESC_3_8=" The Network File System (NFS) is one of the first and most widely distributed file systems in the UNIX environment."
+
+CTRL_3_9=" Remove DNS Server"
+DESC_3_9=" The Domain Name System (DNS) is a hierarchical naming system that maps names to IP addresses for computers, services and other resources connected to a network."
+
+CTRL_3_10=" Remove FTP Server"
+DESC_3_10=" The File Transfer Protocol (FTP) provides networked computers with the ability to transfer files."
+
+CTRL_3_11=" Remove HTTP Server"
+DESC_3_11=" HTTP or web servers provide the ability to host web site content."
+
+CTRL_3_12=" Remove Dovecot (IMAP and POP3 services)"
+DESC_3_12=" Dovecot is an open source IMAP and POP3 server for Linux based systems."
+
+CTRL_3_13=" Remove Samba"
+DESC_3_13=" The Samba daemon allows system administrators to configure their Linux systems to share file systems and directories with Windows desktops."
+
+CTRL_3_14=" Remove HTTP Proxy Server"
+DESC_3_14=" The default HTTP proxy package shipped with Red Hat Linux is squid."
+
+CTRL_3_15=" Remove SNMP Server"
+DESC_3_15=" The Simple Network Management Protocol (SNMP) server is used to listen for SNMP commands from an SNMP management system, execute the commands or collect the information and then send results back to the requesting system."
+
+CTRL_3_16=" Configure Mail Transfer Agent for Local-Only Mode"
+DESC_3_16=" Mail Transfer Agents (MTA), such as sendmail and Postfix, are used to listen for incoming mail and transfer the messages to the appropriate user or mail server."
+
+
+
+CTRL_4=" Network Configuration and Firewalls"
+
+CTRL_4_1=" Modify Network Parameters (Host Only)"
+DESC_4_1=" - "
+
+CTRL_4_1_1=" Disable IP Forwarding"
+DESC_4_1_1=" The net.ipv4.ip_forward flag is used to tell the server whether it can forward packets or not."
+
+CTRL_4_1_2=" Disable Send Packet Redirects"
+DESC_4_1_2=" ICMP Redirects are used to send routing information to other hosts."
+
+CTRL_4_2=" Modify Network Parameters (Host and Router)"
+DESC_4_2=" - "
+
+CTRL_4_2_1=" Disable Source Routed Packet Acceptance"
+DESC_4_2_1=" In networking, source routing allows a sender to partially or fully specify the route packets take through a network."
+
+CTRL_4_2_2=" Disable ICMP Redirect Acceptance"
+DESC_4_2_2=" ICMP redirect messages are packets that convey routing information and tell your host (acting as a router) to send packets via an alternate path."
+
+CTRL_4_2_3=" Disable Secure ICMP Redirect Acceptance"
+DESC_4_2_3=" Secure ICMP redirects are the same as ICMP redirects, except they come from gateways listed on the default gateway list."
+
+CTRL_4_2_4=" Log Suspicious Packets"
+DESC_4_2_4=" When enabled, this feature logs packets with un-routable source addresses to the kernel log."
+
+CTRL_4_2_5=" Enable Ignore Broadcast Requests"
+DESC_4_2_5=" Setting net.ipv4.icmp_echo_ignore_broadcasts to 1 will cause the system to ignore all ICMP echo and timestamp requests to broadcast and multicast addresses."
+
+CTRL_4_2_6=" Enable Bad Error Message Protection"
+DESC_4_2_6=" Setting icmp_ignore_bogus_error_responses to 1 prevents the the kernel from logging bogus responses (RFC-1122 non-compliant) from broadcast reframes, keeping file systems from filling up with useless log messages."
+
+CTRL_4_2_7=" Enable RFC-recommended Source Route Validation"
+DESC_4_2_7=" Setting net.ipv4.conf.all.rp_filter and net.ipv4.conf.default.rp_filter to 1 forces the Linux kernel to utilize reverse path filtering on a received packet to determine if the packet was valid."
+
+CTRL_4_2_8=" Enable TCP SYN Cookies"
+DESC_4_2_8=" When tcp_syncookies is set, the kernel will handle TCP SYN packets normally until the half-open connection queue is full, at which time, the SYN cookie functionality kicks in."
+
+CTRL_4_3=" Wireless Networking"
+DESC_4_3=" - "
+
+CTRL_4_3_1=" Deactivate Wireless Interfaces"
+DESC_4_3_1=" Wireless networking is used when wired networks are unavailable."
+
+CTRL_4_4=" IPv6"
+DESC_4_4=" - "
+
+CTRL_4_4_1=" Configure IPv6"
+DESC_4_4_1=" If IPv6 is to be used, follow this section of the benchmark to configure IPv6."
+
+CTRL_4_4_1_1=" Disable IPv6 Router Advertisements"
+DESC_4_4_1_1=" This setting disables the systems ability to accept router advertisements"
+
+CTRL_4_4_1_2=" Disable IPv6 Redirect Acceptance"
+DESC_4_4_1_2=" This setting prevents the system from accepting ICMP redirects."
+
+CTRL_4_4_2=" Disable IPv6"
+DESC_4_4_2=" Although IPv6 has many advantages over IPv4, few organizations have implemented IPv6."
+
+CTRL_4_5=" Install TCP Wrappers"
+DESC_4_5=" - "
+
+CTRL_4_5_1=" Install TCP Wrappers"
+DESC_4_5_1=" TCP Wrappers provides a simple access list and standardized logging method for services capable of supporting it."
+
+CTRL_4_5_2=" Create /etc/hosts.allow"
+DESC_4_5_2=" The /etc/hosts.allow file specifies which IP addresses are permitted to connect to the host."
+
+CTRL_4_5_3=" Verify Permissions on /etc/hosts.allow"
+DESC_4_5_3=" The /etc/hosts.allow file contains networking information that is used by many applications and therefore must be readable for these applications to operate."
+
+CTRL_4_5_4=" Create /etc/hosts.deny"
+DESC_4_5_4=" The /etc/hosts.deny file specifies which IP addresses are not permitted to connect to the host."
+
+CTRL_4_5_5=" Verify Permissions on /etc/hosts.deny"
+DESC_4_5_5=" The /etc/hosts.deny file contains network information that is used by many system applications and therefore must be readable for these applications to operate."
+
+CTRL_4_6=" Uncommon Network Protocols"
+DESC_4_6=" - "
+
+CTRL_4_6_1=" Disable DCCP"
+DESC_4_6_1=" The Datagram Congestion Control Protocol (DCCP) is a transport layer protocol that supports streaming media and telephony."
+
+CTRL_4_6_2=" Disable SCTP"
+DESC_4_6_2=" The Stream Control Transmission Protocol (SCTP) is a transport layer protocol used to support message oriented communication, with several streams of messages in one connection."
+
+CTRL_4_6_3=" Disable RDS"
+DESC_4_6_3=" The Reliable Datagram Sockets (RDS) protocol is a transport layer protocol designed to provide low-latency, high-bandwidth communications between cluster nodes."
+
+CTRL_4_6_4=" Disable TIPC"
+DESC_4_6_4=" The Transparent Inter-Process Communication (TIPC) protocol is designed to provide communication between cluster nodes."
+
+CTRL_4_7=" Enable firewalld"
+DESC_4_7=" A firewall provides extra protection for the Linux system by limiting communications in and out of the box to specific addresses and ports."
+
+
+
+CTRL_5=" Logging and Auditing"
+
+CTRL_5_1=" Configure rsyslog"
+DESC_5_1=" - "
+
+CTRL_5_1_1=" Install the rsyslog package"
+DESC_5_1_1=" The rsyslog package is a third party package that provides many enhancements to syslog, such as multi-threading, TCP communication, message filtering and data base support. As of RHEL 5.2, rsyslog is available as part of the core distribution."
+
+CTRL_5_1_2=" Activate the rsyslog Service"
+DESC_5_1_2=" The chkconfig command can be used to ensure that the syslog service is turned off and that the rsyslog service is turned on."
+
+CTRL_5_1_3=" Configure /etc/rsyslog.conf"
+DESC_5_1_3=" The /etc/rsyslog.conf file specifies rules for logging and which files are to be used to log certain classes of messages."
+
+CTRL_5_1_4=" Create and Set Permissions on rsyslog Log Files"
+DESC_5_1_4=" A log file must already exist for rsyslog to be able to write to it."
+
+CTRL_5_1_5=" Configure rsyslog to Send Logs to a Remote Log Host"
+DESC_5_1_5=" The rsyslog utility supports the ability to send logs it gathers to a remote log host running syslogd(8) or to receive messages from remote hosts, reducing administrative overhead."
+
+CTRL_5_1_6=" Accept Remote rsyslog Messages Only on Designated Log Hosts"
+DESC_5_1_6=" By default, rsyslog does not listen for log messages coming in from remote systems."
+
+CTRL_5_2=" Configure System Accounting (auditd)"
+DESC_5_2=" - "
+
+CTRL_5_2_1=" Configure Data Retention"
+DESC_5_2_1=" - "
+
+CTRL_5_2_1_1=" Configure Audit Log Storage Size"
+DESC_5_2_1_1=" Configure the maximum size of the audit log file."
+
+CTRL_5_2_1_2=" Disable System on Audit Log Full"
+DESC_5_2_1_2=" The auditd daemon can be configured to halt the system when the audit logs are full."
+
+CTRL_5_2_1_3=" Keep All Auditing Information"
+DESC_5_2_1_3=" Normally, auditd will hold 4 logs of maximum log file size before deleting older log files."
+
+CTRL_5_2_2=" Enable auditd Service"
+DESC_5_2_2=" Turn on the auditd daemon to record system events."
+
+CTRL_5_2_3=" Enable Auditing for Processes That Start Prior to auditd"
+DESC_5_2_3=" Configure grub so that processes that are capable of being audited can be audited even if they start up prior to auditd startup."
+
+CTRL_5_2_4=" Record Events That Modify Date and Time Information"
+DESC_5_2_4=" Capture events where the system date and/or time has been modified."
+
+CTRL_5_2_5=" Record Events That Modify User/Group Information"
+DESC_5_2_5=" Record events affecting the group, passwd (user IDs), shadow and gshadow (passwords) or /etc/security/opasswd (old passwords, based on remember parameter in the PAM configuration) files."
+
+CTRL_5_2_6=" Record Events That Modify the System Network Environment"
+DESC_5_2_6=" Record changes to network environment files or system calls."
+
+CTRL_5_2_7=" Record Events That Modify the Systems Mandatory Access Controls"
+DESC_5_2_7=" Monitor SELinux mandatory access controls."
+
+CTRL_5_2_8=" Collect Login and Logout Events"
+DESC_5_2_8=" Monitor login and logout events."
+
+CTRL_5_2_9=" Collect Session Initiation Information"
+DESC_5_2_9=" Monitor session initiation events."
+
+CTRL_5_2_10=" Collect Discretionary Access Control Permission Modification Events"
+DESC_5_2_10=" Monitor changes to file permissions, attributes, ownership and group."
+
+CTRL_5_2_11=" Collect Unsuccessful Unauthorized Access Attempts to Files"
+DESC_5_2_11=" Monitor for unsuccessful attempts to access files."
+
+CTRL_5_2_12=" Collect Use of Privileged Commands"
+DESC_5_2_12=" Monitor privileged programs (thos that have the setuid and/or setgid bit set on execution) to determine if unprivileged users are running these commands."
+
+CTRL_5_2_13=" Collect Successful File System Mounts"
+DESC_5_2_13=" Monitor the use of the mount system call."
+
+CTRL_5_2_14=" Collect File Deletion Events by User"
+DESC_5_2_14=" Monitor the use of system calls associated with the deletion or renaming of files and file attributes."
+
+CTRL_5_2_15=" Collect Changes to System Administration Scope (sudoers)"
+DESC_5_2_15=" Monitor scope changes for system administrations."
+
+CTRL_5_2_16=" Collect System Administrator Actions (sudolog)"
+DESC_5_2_16=" Monitor the sudo log file."
+
+CTRL_5_2_17=" Collect Kernel Module Loading and Unloading"
+DESC_5_2_17=" Monitor the loading and unloading of kernel modules."
+
+CTRL_5_2_18=" Make the Audit Configuration Immutable"
+DESC_5_2_18=" Set system audit so that audit rules cannot be modified with auditctl."
+
+CTRL_5_3=" Configure logrotate"
+DESC_5_3=" The system includes the capability of rotating log files regularly to avoid filling up the system with logs or making the logs unmanageable large."
+
+
+
+CTRL_6=" System Access, Authentication and Authorization"
+
+CTRL_6_1=" Configure cron and anacron"
+DESC_6_1=" - "
+
+CTRL_6_1_1=" Enable anacron Daemon"
+DESC_6_1_1=" The anacron daemon is used on systems that are not up 24x7."
+
+CTRL_6_1_2=" Enable crond Daemon"
+DESC_6_1_2=" The crond daemon is used to execute batch jobs on the system."
+
+CTRL_6_1_3=" Set User/Group Owner and Permission on /etc/anacrontab"
+DESC_6_1_3=" The /etc/anacrontab file is used by anacron to control its own jobs."
+
+CTRL_6_1_4=" Set User/Group Owner and Permission on /etc/crontab"
+DESC_6_1_4=" The /etc/crontab file is used by cron to control its own jobs."
+
+CTRL_6_1_5=" Set User/Group Owner and Permission on /etc/cron.hourly"
+DESC_6_1_5=" This directory contains system cron jobs that need to run on an hourly basis."
+
+CTRL_6_1_6=" Set User/Group Owner and Permission on /etc/cron.daily"
+DESC_6_1_6=" The /etc/cron.daily directory contains system cron jobs that need to run on a daily basis."
+
+CTRL_6_1_7=" Set User/Group Owner and Permission on /etc/cron.weekly"
+DESC_6_1_7=" The /etc/cron.weekly directory contains system cron jobs that need to run on a weekly basis."
+
+CTRL_6_1_8=" Set User/Group Owner and Permission on /etc/cron.monthly"
+DESC_6_1_8=" The /etc/cron.monthly directory contains system cron jobs that need to run on a monthly basis."
+
+CTRL_6_1_9=" Set User/Group Owner and Permission on /etc/cron.d"
+DESC_6_1_9=" The /etc/cron.d directory contains system cron jobs that need to run in a similar manner to the hourly, daily weekly and monthly jobs from /etc/crontab, but require more granular control as to when they run."
+
+CTRL_6_1_10=" Restrict at Daemon"
+DESC_6_1_10=" The at daemon works with the cron daemon to allow non-privileged users to submit one time only jobs at their convenience."
+
+CTRL_6_1_11=" Restrict at/cron to Authorized Users"
+DESC_6_1_11=" Configure /etc/cron.allow and /etc/at.allow to allow specific users to use these services."
+
+CTRL_6_2=" Configure SSH"
+DESC_6_2=" - "
+
+CTRL_6_2_1=" Set SSH Protocol to 2"
+DESC_6_2_1=" SSH supports two different and incompatible protocols: SSH1 and SSH2."
+
+CTRL_6_2_2=" Set LogLevel to INFO"
+DESC_6_2_2=" The INFO parameter specifices that record login and logout activity will be logged."
+
+CTRL_6_2_3=" Set Permissions on /etc/ssh/sshd_config"
+DESC_6_2_3=" The /etc/ssh/sshd_config file contains configuration specifications for sshd."
+
+CTRL_6_2_4=" Disable SSH X11 Forwarding"
+DESC_6_2_4=" The X11Forwarding parameter provides the ability to tunnel X11 traffic through the connection to enable remote graphic connections."
+
+CTRL_6_2_5=" Set SSH MaxAuthTries to 4 or Less"
+DESC_6_2_5=" The MaxAuthTries parameter specifies the maximum number of authentication attempts permitted per connection."
+
+CTRL_6_2_6=" Set SSH IgnoreRhosts to Yes"
+DESC_6_2_6=" The IgnoreRhosts parameter specifies that .rhosts and .shosts files will not be used in RhostsRSAAuthentication or HostbasedAuthentication."
+
+CTRL_6_2_7=" Set SSH HostbasedAuthentication to No"
+DESC_6_2_7=" The HostbasedAuthentication parameter specifies if authentication is allowed through trusted hosts via the user of .rhosts, or /etc/hosts.equiv, along with successful public key client host authentication."
+
+CTRL_6_2_8=" Disable SSH Root Login"
+DESC_6_2_8=" The PermitRootLogin parameter specifies if the root user can log in using ssh(1)."
+
+CTRL_6_2_9=" Set SSH PermitEmptyPasswords to No"
+DESC_6_2_9=" The PermitEmptyPasswords parameter specifies if the server allows login to accounts with empty password strings."
+
+CTRL_6_2_10=" Do Not Allow Users to Set Environment Options"
+DESC_6_2_10=" The PermitUserEnvironment option allows users to present environment options to the ssh daemon."
+
+CTRL_6_2_11=" Use Only Approved Cipher in Counter Mode"
+DESC_6_2_11=" This variable limits the types of ciphers that SSH can use during communication."
+
+CTRL_6_2_12=" Set Idle Timeout Interval for User Login"
+DESC_6_2_12=" The two options ClientAliveInterval and ClientAliveCountMax control the timeout of ssh sessions."
+
+CTRL_6_2_13=" Limit Access via SSH"
+DESC_6_2_13=" There are several options available to limit which users and group can access the system via SSH."
+
+CTRL_6_2_14=" Set SSH Banner"
+DESC_6_2_14=" The Banner parameter specifies a file whose contents must be sent to the remote user before authentication is permitted."
+
+CTRL_6_3=" Configure PAM"
+DESC_6_3=" - "
+
+CTRL_6_3_1=" Upgrade Password Hashing Algorithm to SHA-512"
+DESC_6_3_1=" The SHA-512 algorithm provides much stronger hashing than MD5, thus providing additional protection to the system by increasing the level of effort for an attacker to successfully determine passwords."
+
+CTRL_6_3_2=" Set Password Creation Requirement Parameters Using pam_pwquality"
+DESC_6_3_2=" The pam_pwquality module checks of the strength of passwords."
+
+CTRL_6_3_3=" Set Lockout for Failed Password Attempts"
+DESC_6_3_3=" Lock out userIDs after n unsuccessful consecutive login attempts."
+
+CTRL_6_3_4=" Limit Password Reuse"
+DESC_6_3_4=" The /etc/security/opasswd file stores the users' old passwords and can be checked to ensure that users are not recycling recent passwords."
+
+CTRL_6_4=" Restrict root Login to System Console"
+DESC_6_4=" The file /etc/securetty contains a list of valid terminals that may be logged in directly as root."
+
+CTRL_6_5=" Restrict Access to the su Command"
+DESC_6_5=" The su command allows a user to run a command or shell as another user."
+
+
+
+CTRL_7=" User Accounts and Environment"
+
+CTRL_7_1=" Set Shadow Password Suite Parameters (/etc/login.defs)"
+DESC_7_1=" - "
+
+CTRL_7_1_1=" Set Password Expiration Days"
+DESC_7_1_1=" The PASS_MAX_DAYS parameter in /etc/login.defs allows an administrator to force passwords to expire once they reach a defined age."
+
+CTRL_7_1_2=" Set Password Change Minimum Number of Days"
+DESC_7_1_2=" The PASS_MIN_DAYS parameter in /etc/login.defs allows an administrator to prevent users from changing their password until a minimum number of days have passed since the last time the user changed their password."
+
+CTRL_7_1_3=" Set Password Expiring Warning Days"
+DESC_7_1_3=" The PASS_WARN_AGE parameter in /etc/login.defs allows an administrator to notify users that their password will expire in a defined number of days."
+
+CTRL_7_2=" Disable System Accounts"
+DESC_7_2=" There are a number of accounts provided with the Red Hat that are used to manage applications and are not intended to provide an interactive shell."
+
+CTRL_7_3=" Set Default Group for root Account"
+DESC_7_3=" The usermod command can be used to specify which group the root user belongs to."
+
+CTRL_7_4=" Set Default umask for Users"
+DESC_7_4=" The default umask determines the permissions of files created by users."
+
+CTRL_7_5=" Lock Inactive User Accounts"
+DESC_7_5=" Guidelines published by the U.S. Department of Defense specify that user accounts must be locked out after 35 days of inactivity."
+
+
+
+CTRL_8=" Warning Banners"
+
+CTRL_8_1=" Set Warning Banner for Standard Login Services"
+DESC_8_1=" The contents of the /etc/issue file are displayed prior to the login prompt on the system's console and serial devices, and also prior to logins via telnet."
+
+CTRL_8_2=" Remove OS Information from Login Warning Banners"
+DESC_8_2=" Unix-based systems have typically displayed information about the OS release and patch level upon logging in to the system."
+
+CTRL_8_3=" Set GNOME Warning Banner"
+DESC_8_3=" The GNOME Display Manager is used for login session management."
+
+
+
+CTRL_9=" System Maintenance"
+
+CTRL_9_1=" Verify System File Permissions"
+DESC_9_1=" - "
+
+CTRL_9_1_1=" Verify System File Permissions"
+DESC_9_1_1=" It is important to confirm that packaged system files and directories are maintained with the permissions they were intended to have from the OS vendor."
+
+CTRL_9_1_2=" Verify Permissions on /etc/passwd"
+DESC_9_1_2=" The /etc/passwd file contains user account information that is used by many system utilities and therefore must be readable for these utilities to operate."
+
+CTRL_9_1_3=" Verify Permissions on /etc/shadow"
+DESC_9_1_3=" The /etc/shadow file is used to store the information about user accounts that is critical to the security of those accounts, such as the hashed password and other security information."
+
+CTRL_9_1_4=" Verify Permissions on /etc/gshadow"
+DESC_9_1_4=" The /etc/gshadow file contains information about group accounts that is critical to the security of those accounts, such as the hashed password and other security information."
+
+CTRL_9_1_5=" Verify Permissions on /etc/group"
+DESC_9_1_5=" The /etc/group file contains a list of all the valid groups defined in the system."
+
+CTRL_9_1_6=" Verify User/Group Ownership on /etc/passwd"
+DESC_9_1_6=" The /etc/passwd file contains a list of all the valid userIDs defined in the system, but not the passwords."
+
+CTRL_9_1_7=" Verify User/Group Ownership on /etc/shadow"
+DESC_9_1_7=" The /etc/shadow file contains the one-way cipher text passwords for each user defined in the /etc/passwd file."
+
+CTRL_9_1_8=" Verify User/Group Ownership on /etc/gshadow"
+DESC_9_1_8=" The /etc/gshadow file contains information about group accounts that is critical to the security of those accounts, such as the hashed password and other security information."
+
+CTRL_9_1_9=" Verify User/Group Ownership on /etc/group"
+DESC_9_1_9=" The /etc/group file contains a list of all the valid groups defined in the system."
+
+CTRL_9_1_10=" Find World Writable Files"
+DESC_9_1_10=" Unix-based systems support variable settings to control access to files."
+
+CTRL_9_1_11=" Find Un-owned Files and Directories"
+DESC_9_1_11=" Sometimes when administrators delete users from the password file they neglect to remove all files owned by those users from the system."
+
+CTRL_9_1_12=" Find Un-grouped Files and Directories"
+DESC_9_1_12=" Sometimes when administrators delete users from the password file they neglect to remove all files owned by those users from the system."
+
+CTRL_9_1_13=" Find SUID System Executables"
+DESC_9_1_13=" The owner of a file can set the file permissions to run with the owner or group permissions, even if the user running the program is not the owner or a member of the group."
+
+CTRL_9_1_14=" Find SGID System Executables"
+DESC_9_1_14=" The owner of a file can set the file permissions to run with the owner or group permissions, even if the user running the program is not the owner or a member of the group."
+
+CTRL_9_2=" Review User and Group Settings"
+DESC_9_2=" - "
+
+CTRL_9_2_1=" Ensure Password Fields are Not Empty"
+DESC_9_2_1=" An account with an empty password field means that anybody may log in as that user without providing a password."
+
+CTRL_9_2_2=" Verify No Legacy + Entries Exist in /etc/passwd File"
+DESC_9_2_2=" The character + in various files used to be markers for systems to insert data from NIS maps at a certain point in a system configuration file."
+
+CTRL_9_2_3=" Verify No Legacy + Entries Exist in /etc/shadow File"
+DESC_9_2_3=" The character + in various files used to be markers for systems to insert data from NIS maps at a certain point in a system configuration file."
+
+CTRL_9_2_4=" Verify No Legacy + Entries Exist in /etc/group File"
+DESC_9_2_4=" The character + in various files used to be markers for systems to insert data from NIS maps at a certain point in a system configuration file."
+
+CTRL_9_2_5=" Verify No UID 0 Accounts Exist Other Than root"
+DESC_9_2_5=" Any account with UID 0 has superuser privileges on the system."
+
+CTRL_9_2_6=" Ensure root PATH Integrity"
+DESC_9_2_6=" The root user can execute any command on the system and could be fooled into executing programs unemotionally if the PATH is not set correctly."
+
+CTRL_9_2_7=" Check Permissions on User Home Directories"
+DESC_9_2_7=" While the system administrator can establish secure permissions for users home directories, the users can easily override these."
+
+CTRL_9_2_8=" Check User Dot File Permissions"
+DESC_9_2_8=" While the system administrator can establish secure permissions for users "dot" files, the users can easily override these."
+
+CTRL_9_2_9=" Check Permissions on User .netrc Files"
+DESC_9_2_9=" While the system administrator can establish secure permissions for users .netrc files, the users can easily override these."
+
+CTRL_9_2_10=" Check for Presence of User .rhosts Files"
+DESC_9_2_10=" While no .rhosts files are shipped with RHEL6, users can easily create them."
+
+CTRL_9_2_11=" Check Groups in /etc/passwd"
+DESC_9_2_11=" Over time, system administration errors and changes can lead to groups being defined in /etc/passwd but not in /etc/group."
+
+CTRL_9_2_12=" Check That Users Are Assigned Valid Home Directories"
+DESC_9_2_12=" Users can be defined in /etc/passwd without a home directory or with a home directory does not actually exist."
+
+CTRL_9_2_13=" Check User Home Directory Ownership"
+DESC_9_2_13=" The user home directory is space defined for the particular user to set local environment variables and to store personal files."
+
+CTRL_9_2_14=" Check for Duplicate UIDs"
+DESC_9_2_14=" Although the useradd program will not let you create a duplicate User ID (UID), it is possible for an administrator to manually edit the /etc/passwd file and change the UID field."
+
+CTRL_9_2_15=" Check for Duplicate GIDs"
+DESC_9_2_15=" Although the groupadd program will not let you create a duplicate Group ID (GID), it is possible for an administrator to manually edit the /etc/group file and change the GID field."
+
+CTRL_9_2_16=" Check That Reserved UIDs Are Assigned to System Accounts"
+DESC_9_2_16=" Traditionally, UNIX systems establish "reserved" UIDs (0-499 range) that are intended for system accounts."
+
+CTRL_9_2_17=" Check for Duplicate User Names"
+DESC_9_2_17=" Although the useradd program will not let you create a duplicate user name, it is possible for an administrator to manually edit the /etc/passwd file and change the user name."
+
+CTRL_9_2_18=" Check for Duplicate Group Names"
+DESC_9_2_18=" Although the groupadd program will not let you create a duplicate group name, it is possible for an administrator to manually edit the /etc/group file and change the group name."
+
+CTRL_9_2_19=" Check for Presence of User .netrc Files"
+DESC_9_2_19=" The .netrc file contains data for logging into a remote host for file transfers via FTP."
+
+CTRL_9_2_20=" Check for Presence of User .forward Files"
+DESC_9_2_20=" The .forward file specifies an email address to forward the user mail to."
